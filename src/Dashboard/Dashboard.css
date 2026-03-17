@@ -5,10 +5,12 @@ body{
   color:white;
 }
 
-.dashboard{
-  max-width:900px;
-  margin:auto;
-  padding:30px;
+.dashboard {
+  padding: 20px;
+  background: #0f0f0f;
+  min-height: 100vh;
+  color: white;
+  font-family: Arial, sans-serif;
 }
 
 .title{
@@ -45,4 +47,66 @@ body{
   display:flex;
   flex-direction:column;
   gap:20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 20px 30px;
+  background: #1a1a1a;
+
+  border-radius: 999px; /* capsule */
+  border: 1px solid #333;
+}
+
+.badge {
+  position: absolute;
+  top: -10px;
+  right: 20px;
+
+  background: red;
+  color: white;
+  padding: 6px 12px;
+
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+.info h2 {
+  margin: 0;
+}
+
+.available {
+  color: #00ff88;
+}
+
+.not-available {
+  color: #ff4d4d;
+}
+
+.btn {
+  background: red;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: darkred;
 }
