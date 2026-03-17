@@ -26,6 +26,14 @@ function Dashboard() {
       });
   }, []);
 
+  // REQUEST TOGGLE
+  const handleRequest = (id) => {
+    const updated = donors.map((donor) =>
+      donor.id === id ? { ...donor, requested: true } : donor
+    );
+    setDonors(updated);
+  };
+
    return (
     <div className="dashboard">
 
