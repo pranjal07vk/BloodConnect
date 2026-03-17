@@ -34,6 +34,14 @@ function Dashboard() {
     setDonors(updated);
   };
 
+  // FILTER LOGIC
+  const filteredDonors = donors.filter((donor) => {
+    return (
+      donor.city.toLowerCase().includes(search.toLowerCase()) &&
+      (bloodFilter === "" || donor.bloodGroup === bloodFilter)
+    );
+  });
+
    return (
     <div className="dashboard">
 
