@@ -105,8 +105,10 @@ h1 {
   border-radius: 20px;
   color: white;
   cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .btn:hover {
   background: darkred;
+  transform: scale(1.05);
 }
