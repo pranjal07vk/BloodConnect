@@ -5,6 +5,7 @@ function Dashboard() {
   const [donors, setDonors] = useState([]);
   const [search, setSearch] = useState("");
   const [bloodFilter, setBloodFilter] = useState("");
+  const [loading, setLoading] = useState(true);
 
    //API FETCH
   useEffect(() => {
@@ -23,6 +24,7 @@ function Dashboard() {
         }));
 
         setDonors(mapped);
+        setLoading(false);
       });
   }, []);
 
@@ -46,6 +48,10 @@ function Dashboard() {
   const availableCount = filteredDonors.filter(
     (d) => d.available
   ).length;
+
+  if (loading) {
+    return <div className="loader">Loading donors...</div>;
+  }
 
   return (
     <div className="dashboard">
@@ -89,7 +95,7 @@ function Dashboard() {
         {filteredDonors.length === 0 ? (
           <p>No donors found</p>
         ) : ( 
-          filterDonors.map((donor) => (
+          filteredDonors.map((donor) => (
             <div className="card" key={donor.id}>
               <div className="badge">{donor.bloodGroup}</div>
 
@@ -102,7 +108,7 @@ function Dashboard() {
               </div>
 
               <button
-                className="btn"
+                className={`btn ${donor.requested ? "clicked" : ""}`}
                 onClick={() => handleRequest(donor.id)}
               >
                 {donor.requested ? "Request Sent ✅" : "Request Help"}
