@@ -2,6 +2,23 @@ import React from "react";
 import "./Dashboard.css";
 
 function Dashboard() {
+  const donors = [
+    {
+      id: 1,
+      name: "Rahul Sharma",
+      city: "Bangalore",
+      bloodGroup: "O+",
+      available: true,
+    },
+    {
+      id: 2,
+      name: "Anjali Verma",
+      city: "Delhi",
+      bloodGroup: "A+",
+      available: false,
+    },
+  ];
+
   return (
     <div className="dashboard">
 
@@ -30,7 +47,25 @@ function Dashboard() {
       <p className="donor-count">Available donors: 0</p>
 
       <div className="donor-list">
-        {/* Donor cards will appear here */}
+        <div className="card-container">
+          {donors.map((donor) => (
+            <div className="card" key={donor.id}>
+            
+              {/* Blood badge */}
+              <div className="badge">{donor.bloodGroup}</div>
+
+              <div className="info">
+                <h2>{donor.name}</h2>
+                <p>{donor.city}</p>
+                <p className={donor.available ? "available" : "not-available"}>
+                  {donor.available ? "Available" : "Not Available"}
+                </p>
+              </div>
+
+              <button className="btn">Request Help</button>
+            </div>
+          ))}
+        </div>
       </div>
 
     </div>
