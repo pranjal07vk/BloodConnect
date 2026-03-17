@@ -23,8 +23,10 @@ function Dashboard() {
           requested: false,
         }));
 
-        setDonors(mapped);
-        setLoading(false);
+        setTimeout(() => {
+          setDonors(mapped);
+          setLoading(false);
+        }, 2000);
       });
   }, []);
 
