@@ -1,7 +1,12 @@
-import Dashboard from "./Dashboard/Dashboard";
+import React from 'react';
+import Login from './Login/Login'; // Double check this path matches your sidebar!
 
 function App() {
-  return <Dashboard />;
+  return (
+    <div className="App">
+      <Login />
+    </div>
+  );
 }
 
 export default App;

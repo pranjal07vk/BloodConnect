@@ -52,17 +52,31 @@ button {
   color: black;
 }
 
+.sign-in {
+  color: white;
+}
+
 /* TOGGLE BOX */
 .toggle-box {
   position: absolute;
   bottom: 10px;
   left: 50%;
-  transform: translateX(-50%);
+  
   display: flex;
   gap: 10px;
 }
 
 /* 🔥 TOGGLE EFFECT */
 .container.active {
-  transform: rotateY(180deg);
+  
+}
+
+.link {
+  color: red;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.link:hover {
+  text-decoration: underline;
 }
