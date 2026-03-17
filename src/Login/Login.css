@@ -1,0 +1,68 @@
+/* PAGE BACKGROUND */
+.login-page {
+  height: 100vh;
+  background: linear-gradient(120deg, #1a1a1a, #300000);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* MAIN CONTAINER */
+.container {
+  position: relative;
+  width: 700px;
+  height: 400px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  transition: 0.5s ease;
+}
+
+/* FORMS */
+.form {
+  width: 50%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+}
+
+/* INPUTS */
+input {
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+}
+
+/* BUTTON */
+button {
+  padding: 10px;
+  border: none;
+  background: red;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* SIGN UP PANEL POSITION */
+.sign-up {
+  background: white;
+  color: black;
+}
+
+/* TOGGLE BOX */
+.toggle-box {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+/* 🔥 TOGGLE EFFECT */
+.container.active {
+  transform: rotateY(180deg);
+}
