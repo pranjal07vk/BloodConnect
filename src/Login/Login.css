@@ -1,5 +1,5 @@
 /* PAGE BACKGROUND */
-.login-page {
+.auth-container {
   height: 100vh;
   background: linear-gradient(120deg, #1a1a1a, #300000);
   display: flex;
@@ -9,31 +9,38 @@
 
 /* MAIN CONTAINER */
 .container {
+  display: flex;
+  flex-direction: row;
   position: relative;
-  width: 700px;
-  height: 400px;
-  background: rgba(0, 0, 0, 0.6);
+  width: 900px;
+  height: 550px;
+  background: rgba(0, 0, 0, 0.8);
   border-radius: 20px;
   overflow: hidden;
-  display: flex;
   transition: 0.5s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  margin: auto;
 }
 
 /* FORMS */
 .form {
-  width: 50%;
+  flex: 1;
   padding: 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 15px;
+  gap: 20px;
+  transition: all 0.4s ease;
 }
+
 
 /* INPUTS */
 input {
-  padding: 10px;
-  border: none;
-  border-radius: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
 }
 
 /* BUTTON */
@@ -46,31 +53,19 @@ button {
   cursor: pointer;
 }
 
-/* SIGN UP PANEL POSITION */
-.sign-up {
-  background: white;
-  color: black;
-}
-
-.sign-in {
+/* ACTIVE PANEL */
+.active {
+  background-color: black;
   color: white;
 }
 
-/* TOGGLE BOX */
-.toggle-box {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  
-  display: flex;
-  gap: 10px;
+/* INACTIVE PANEL */
+.inactive {
+  background-color: white;
+  color: black;
 }
 
-/* 🔥 TOGGLE EFFECT */
-.container.active {
-  
-}
-
+/* LINKS */
 .link {
   color: red;
   cursor: pointer;
