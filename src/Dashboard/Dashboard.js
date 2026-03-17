@@ -47,19 +47,26 @@ function Dashboard() {
     (d) => d.available
   ).length;
 
-   return (
+  return (
     <div className="dashboard">
 
       <h1 className="title">🩸 Blood Donor Finder</h1>
 
+      {/* FILTERS */}
       <div className="filters">
         <input
           type="text"
           placeholder="Search city..."
           className="search"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
         />
 
-        <select className="blood-filter">
+        <select
+          className="blood-filter"
+          value={bloodFilter}
+          onChange={(e) => setBloodFilter(e.target.value)}
+        >
           <option value="">All Blood Groups</option>
           <option>A+</option>
           <option>B+</option>
@@ -72,11 +79,17 @@ function Dashboard() {
         </select>
       </div>
 
-      <p className="donor-count">Available donors: 0</p>
+      {/* {DONOR COUNT} */}
+      <p className="donor-count">
+        Available donors: {availableCount}
+      </p>
 
-      <div className="donor-list">
-        <div className="card-container">
-          {donors.map((donor) => (
+      {/* DONOR CARDS */}
+      <div className="card-container">
+        {filteredDonors.length === 0 ? (
+          <p>No donors found</p>
+        ) : ( 
+          filterDonors.map((donor) => (
             <div className="card" key={donor.id}>
               <div className="badge">{donor.bloodGroup}</div>
 
@@ -95,11 +108,11 @@ function Dashboard() {
                 {donor.requested ? "Request Sent ✅" : "Request Help"}
               </button>
             </div>
-          ))}
-        </div>
+          ))  
+        )}
       </div>
-
     </div>
+
   );
 }
 
