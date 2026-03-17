@@ -75,15 +75,27 @@ h1 {
 
 .badge {
   position: absolute;
-  top: -10px;
-  right: 20px;
+  top: -15px;
+  right: 25px;
+
+  width: 40px;
+  height: 40px;
 
   background: red;
   color: white;
-  padding: 6px 12px;
 
-  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   font-weight: bold;
+
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+}
+
+.badge span {
+  transform: rotate(45deg);
 }
 
 .info h2 {
@@ -111,4 +123,9 @@ h1 {
 .btn:hover {
   background: darkred;
   transform: scale(1.05);
+}
+
+.clicked {
+  background: #00c853;
+  transform: scale(0.95);
 }
