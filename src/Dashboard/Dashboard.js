@@ -1,25 +1,32 @@
-import React from "react";
+import React, { useState, useEffect} from "react";
 import "./Dashboard.css";
 
 function Dashboard() {
-  const donors = [
-    {
-      id: 1,
-      name: "Rahul Sharma",
-      city: "Bangalore",
-      bloodGroup: "O+",
-      available: true,
-    },
-    {
-      id: 2,
-      name: "Anjali Verma",
-      city: "Delhi",
-      bloodGroup: "A+",
-      available: false,
-    },
-  ];
+  const [donors, setDonors] = useState([]);
+  const [search, setSearch] = useState("");
+  const [bloodFilter, setBloodFilter] = useState("");
 
-  return (
+   //API FETCH
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then((res) => res.json())
+      .then((data) => {
+        const bloodGroups = ["A+", "B+", "O+", "AB+", "O-"];
+
+        const mapped = data.map((user, index) => ({
+          id: user.id,
+          name: user.name,
+          city: user.address.city,
+          bloodGroup: bloodGroups[index % bloodGroups.length],
+          available: Math.random() > 0.3,
+          requested: false,
+        }));
+
+        setDonors(mapped);
+      });
+  }, []);
+
+   return (
     <div className="dashboard">
 
       <h1 className="title">🩸 Blood Donor Finder</h1>
@@ -50,8 +57,6 @@ function Dashboard() {
         <div className="card-container">
           {donors.map((donor) => (
             <div className="card" key={donor.id}>
-            
-              {/* Blood badge */}
               <div className="badge">{donor.bloodGroup}</div>
 
               <div className="info">
@@ -62,7 +67,12 @@ function Dashboard() {
                 </p>
               </div>
 
-              <button className="btn">Request Help</button>
+              <button
+                className="btn"
+                onClick={() => handleRequest(donor.id)}
+              >
+                {donor.requested ? "Request Sent ✅" : "Request Help"}
+              </button>
             </div>
           ))}
         </div>
