@@ -97,7 +97,9 @@ function Dashboard() {
         ) : ( 
           filteredDonors.map((donor) => (
             <div className="card" key={donor.id}>
-              <div className="badge">{donor.bloodGroup}</div>
+              <div className="badge">
+                <span>{donor.bloodGroup}</span>
+              </div>
 
               <div className="info">
                 <h2>{donor.name}</h2>
