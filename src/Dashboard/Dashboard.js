@@ -42,6 +42,11 @@ function Dashboard() {
     );
   });
 
+  // COUNT AVAILABLE
+  const availableCount = filteredDonors.filter(
+    (d) => d.available
+  ).length;
+
    return (
     <div className="dashboard">
 
