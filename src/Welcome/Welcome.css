@@ -1,0 +1,66 @@
+/* FULL PAGE */
+.welcome-page {
+  height: 100vh;
+  background: linear-gradient(120deg, #1a1a1a, #300000);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* CARD */
+.welcome-card {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 50px;
+  border-radius: 20px;
+  text-align: center;
+  width: 500px;
+  color: white;
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+}
+
+/* TEXT */
+.welcome-text {
+  font-size: 22px;
+  min-height: 60px;
+}
+
+/* BUTTON CONTAINER */
+.welcome-buttons {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+/* BUTTONS */
+.welcome-buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background: red;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.welcome-buttons button:hover {
+  background: darkred;
+}
+
+/* DISABLED BUTTON */
+.welcome-buttons button:disabled {
+  background: gray;
+  cursor: not-allowed;
+}
+
+.welcome-text::after {
+  content: "|";
+  margin-left: 5px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}

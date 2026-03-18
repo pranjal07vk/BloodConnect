@@ -78,3 +78,18 @@ button {
 .link:hover {
   text-decoration: underline;
 }
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: -8px;
+}
+
+.success {
+  color: #90ee90; /* lightgreen */
+  text-align: center;
+  margin-bottom: 20px;
+  width: 100%;        /* Ensures it spans the container width */
+  font-size: 0.9rem;  /* Optional: makes it look a bit sleeker */
+  font-weight: 500;
+}
