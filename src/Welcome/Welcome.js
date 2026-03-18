@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "./Welcome.css";
 
 function Welcome({ username, onNext }) {
-  const fullText = `Hey ${username}, welcome to BloodConnect. How can we help you?`;
+  const fullText = `Heey ${username}, welcome to BloodConnect. How can we help you?`;
   const [displayText, setDisplayText] = useState("");
   const [done, setDone] = useState(false);
   
@@ -12,12 +12,12 @@ function Welcome({ username, onNext }) {
     let index = 0;
 
     const interval = setInterval(() => {
-      setDisplayText((prev) => prev + fullText[index]);
-      index++;
-
-      if (index === fullText.length) {
+      if (index < fullText.length) {
+        setDisplayText((prev) => prev + fullText[index]);
+        index++;
+      } else {
         clearInterval(interval);
-        setDone(true);
+        setDone(true); // if you're using done state
       }
     }, 40);
 
