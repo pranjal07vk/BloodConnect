@@ -5,27 +5,27 @@ import Welcome from "./Welcome/Welcome";
 
 function App() {
   const [user, setUser] = useState("");
-  const [page, setPage] = useState("login");
+  const [page, setPage] = useState("Login");
 
   return (
     <>
-      {page === "login" && (
+      {page === "Login" && (
         <Login
           onLogin={(username) => {
             setUser(username);
-            setPage("welcome");
+            setPage("Welcome");
           }}
         />
       )}
 
-      {page === "welcome" && (
+      {page === "Welcome" && (
         <Welcome
           username={user}
-          onNext={() => setPage("dashboard")}
+          onNext={() => setPage("Dashboard")}
         />
       )}
 
-      {page === "dashboard" && (
+      {page === "Dashboard" && (
         <Dashboard username={user} />
       )}
     </>

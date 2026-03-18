@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Login.css";
 
-function Login( onLogin ) {
+function Login({ onLogin }) {
   const [isSignUp, setIsSignUp] = useState(false);
   const [step, setStep] = useState(1);
   const [signInData, setSignInData] = useState({
