@@ -26,7 +26,13 @@ function App() {
       )}
 
       {page === "Dashboard" && (
-        <Dashboard username={user} />
+        <Dashboard 
+          username={user} 
+          onLogout={() => {
+            setUser("");
+            setPage("Login");
+          }} 
+        />
       )}
     </>
   );

@@ -1,33 +1,29 @@
 import React, { useState, useEffect} from "react";
 import "./Dashboard.css";
 
-function Dashboard() {
+function Dashboard({ username, onLogout }) {
   const [donors, setDonors] = useState([]);
   const [search, setSearch] = useState("");
   const [bloodFilter, setBloodFilter] = useState("");
   const [loading, setLoading] = useState(true);
 
-   //API FETCH
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((res) => res.json())
-      .then((data) => {
-        const bloodGroups = ["A+", "B+", "O+", "AB+", "O-"];
+    // Check if donors exist in localStorage
+    let savedDonors = JSON.parse(localStorage.getItem("bloodConnectDonors"));
+    
+    if (!savedDonors || savedDonors.length === 0) {
+      // Initialize with some dummy data if empty
+      savedDonors = [
+        { id: 1, name: "Leanne Graham", city: "Gwenborough", bloodGroup: "A+", available: true, requested: false },
+        { id: 2, name: "Ervin Howell", city: "Wisokyburgh", bloodGroup: "B+", available: true, requested: false },
+        { id: 3, name: "Clementine Bauch", city: "McKenziehaven", bloodGroup: "O+", available: false, requested: false },
+        { id: 4, name: "Patricia Lebsack", city: "South Elvis", bloodGroup: "AB+", available: true, requested: false },
+      ];
+      localStorage.setItem("bloodConnectDonors", JSON.stringify(savedDonors));
+    }
 
-        const mapped = data.map((user, index) => ({
-          id: user.id,
-          name: user.name,
-          city: user.address.city,
-          bloodGroup: bloodGroups[index % bloodGroups.length],
-          available: Math.random() > 0.3,
-          requested: false,
-        }));
-
-        setTimeout(() => {
-          setDonors(mapped);
-          setLoading(false);
-        }, 2000);
-      });
+    setDonors(savedDonors);
+    setLoading(false);
   }, []);
 
   // REQUEST TOGGLE
@@ -36,6 +32,8 @@ function Dashboard() {
       donor.id === id ? { ...donor, requested: true } : donor
     );
     setDonors(updated);
+    // Optional: Save requested state back to local storage
+    localStorage.setItem("bloodConnectDonors", JSON.stringify(updated));
   };
 
   // FILTER LOGIC
@@ -58,7 +56,12 @@ function Dashboard() {
   return (
     <div className="dashboard">
 
-      <h1 className="title">🩸 Blood Donor Finder</h1>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <h1 className="title">🩸 Blood Donor Finder</h1>
+        <button onClick={onLogout} style={{ padding: '8px 16px', background: '#e74c3c', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>
+          Logout
+        </button>
+      </div>
 
       {/* FILTERS */}
       <div className="filters">

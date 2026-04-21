@@ -53,6 +53,17 @@ function Login({ onLogin }) {
     if (!signInData.username) newErrors.username = "Username required";
     if (!signInData.password) newErrors.password = "Password required";
 
+    if (signInData.username && signInData.password) {
+      const users = JSON.parse(localStorage.getItem("bloodConnectUsers")) || {};
+      const user = users[signInData.username];
+      
+      if (!user) {
+        newErrors.username = "User not found";
+      } else if (user.password !== signInData.password) {
+        newErrors.password = "Incorrect password";
+      }
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -72,6 +83,13 @@ function Login({ onLogin }) {
     let newErrors = {};
 
     if (!signUpData.username) newErrors.username = "Username required";
+    else {
+      const users = JSON.parse(localStorage.getItem("bloodConnectUsers")) || {};
+      if (users[signUpData.username]) {
+        newErrors.username = "Username already exists";
+      }
+    }
+    
     if (!signUpData.password) newErrors.password = "Password required";
 
     if (signUpData.password !== signUpData.confirmPassword) {
@@ -219,6 +237,16 @@ function Login({ onLogin }) {
 
               <button onClick={() => {
                 if (validateStep2()) {
+                  const users = JSON.parse(localStorage.getItem("bloodConnectUsers")) || {};
+                  users[signUpData.username] = {
+                    name: signUpData.name,
+                    city: signUpData.city,
+                    bloodGroup: signUpData.bloodGroup,
+                    username: signUpData.username,
+                    password: signUpData.password
+                  };
+                  localStorage.setItem("bloodConnectUsers", JSON.stringify(users));
+
                   setSuccessMsg("Signup successful! Please login.");
 
                   setSignUpData({
